@@ -5,6 +5,7 @@ import Fruits from "./components/Fruits";
 import Condition from "./components/Condition";
 import Message from "./components/Message";
 import Counter from "./components/Counter";
+import Form from "./components/Form";
 
 function App() {
   let npc = { name: "NPC", age: 9999, message: "Hewwo", emoji: "()()()()" };
@@ -17,6 +18,7 @@ function App() {
       <Condition></Condition>
       <Message></Message>
       <Counter></Counter>
+      <Form></Form>
     </div>
   );
 }
