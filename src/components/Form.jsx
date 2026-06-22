@@ -1,20 +1,15 @@
 import { useState } from "react";
 
 export default function Form() {
-  const [name, setName] = useState("");
+  const [name, setName] = useState({first: "",last: ""});
   const [kaba, setKaba] = useState("");
-  const [submission, setSubmission] = useState("");
 
   function handleChange(e) {
-    setName(e.target.value);
-  }
-  function handleKaba(e)
-  {
-    setKaba(e.target.value);
-  }
-  function submit()
-  {
-    setSubmission(name+kaba);
+    const {name, value} = e.target;
+    setName(prev=>({
+      ...prev,
+      [name]:value
+    }))
   }
 
   return (
@@ -23,15 +18,19 @@ export default function Form() {
 
       <form>
         <input
-          onChange={handleChange}
-          size = "1"
-          type="text"
-          value={name}
+        name="first"
+        onChange={handleChange}
+        type="text"
+        value={name.first}
         />
-        <input onChange={handleKaba} type="text" value={kaba}></input>
-        <input type="submit" onClick={submit}></input>
+        <input
+        name = "last"
+        onChange={handleChange}
+        type="text"
+        value={name.last}>
+        </input>
+        <p>The full name is {name.first} {name.last}</p>
       </form>
-      <p>After submission = {submission}</p>
     </div>
   );
 }
